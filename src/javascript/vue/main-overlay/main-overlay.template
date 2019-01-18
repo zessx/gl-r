@@ -1,0 +1,7 @@
+<div class="main-overlay-section section" :class="[{ hidden: !visible }]">
+
+    <nav>
+        <img ref="logo" src="./assets/img/logo.svg" alt="" :class="[{ hidden: !logoVisible }]" class="logo">
+    </nav>
+    
+</div>

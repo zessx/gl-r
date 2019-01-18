@@ -1,0 +1,29 @@
+.loader-section
+  background-color: #ffffff
+  z-index 100
+  transition: opacity .8s cubic-bezier(0.975, 0.010, 0.090, 0.995), transform .8s cubic-bezier(0.975, 0.010, 0.090, 0.995)
+  &.hidden
+    opacity 0
+    pointer-events: none
+    transform: scaleX(1.1)
+
+  .loading-bar
+    background-color: #eaeaea
+    position: absolute
+    height 1px
+    width 100%
+    margin-top: 3px
+
+  .loading-bar-wrapper
+    position: absolute
+    top: 50%
+    left: 50%
+    width 120px
+    margin-left: -60px
+
+    .bar
+      position: absolute
+      height 100%
+      width 0
+      background: #262626
+      transition: width .5s ease

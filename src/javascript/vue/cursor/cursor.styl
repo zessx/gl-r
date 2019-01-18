@@ -1,0 +1,80 @@
+@keyframes cursor-anim {
+    0%, 20% {
+        opacity 1
+    }
+    10% {
+        opacity 0
+    }
+}
+
+.cursor
+    position fixed
+    top 0
+    left 0
+    width 90px
+    height 90px
+    z-index 100
+    pointer-events: none
+    >*
+        opacity 0
+        transition: opacity .8s ease
+
+    &.visible>*
+        opacity 1
+
+    &.visible.playing
+        .dots
+            opacity: 1
+
+    .dots
+        opacity: 0
+        transition: opacity .4s ease
+        position: absolute
+        top: 0
+        left: 0
+        height: 100%
+        width: 100%
+
+    .dot
+        position: absolute
+        top 50%
+        left: 50%
+        width 4px
+        height 4px
+        margin-top: 6px
+        margin-left: -2px
+        background-color: white
+        border-radius: 1px
+        animation cursor-anim 3s ease infinite
+
+        &.dot2
+            transform: translate(-7px, -5px)
+        &.dot3
+            transform: translate(7px, -5px)
+        &.dot4
+            transform: translate(-14px, -10px)
+        &.dot5
+            transform: translate(14px, -10px)
+
+body.step-contact
+  .cursor
+    .dots
+      transform rotate(180deg)
+
++tablet()
+    .cursor
+        position fixed
+        top auto
+        bottom: 90px
+        left 50%
+        margin-left: -45px
+
+
++below(700px)
+
+    .cursor
+        position fixed
+        top auto
+        bottom: -20px
+        left 50%
+        margin-left: -45px

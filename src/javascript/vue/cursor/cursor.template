@@ -1,0 +1,3 @@
+<div class="cursor" :class="[{ visible, playing }]">
+    <canvas></canvas>
+</div>

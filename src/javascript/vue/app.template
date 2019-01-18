@@ -1,0 +1,5 @@
+<div class="views">
+    <main-overlay-section></main-overlay-section>
+    <loader-section></loader-section>
+    <ui-cursor></ui-cursor>
+</div>

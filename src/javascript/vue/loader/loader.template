@@ -1,0 +1,7 @@
+<div class="loader-section section" :class="[{ hidden: !visible }]">
+  <div class="loading-bar-wrapper">
+    <div class="loading-bar">
+      <div class="bar" :style="{ width: progress + '%' }"></div>
+    </div>
+  </div>
+</div>
