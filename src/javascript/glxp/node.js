@@ -10,7 +10,7 @@ class Node {
         this.children = []
         this.mesh = null
 
-        this.position = vec3.fromValues(0, -.8, 0)
+        this.position = vec3.fromValues(0, 0, 0)
         this.scale = vec3.fromValues(1, 1, 1)
         this.rotation = vec3.fromValues(0, 0, 0)
         this.quaternion = quat.create()

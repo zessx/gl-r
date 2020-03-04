@@ -11,7 +11,9 @@ import TextureLoader from './textureLoader'
 import Node from './node'
 
 // Entities
-
+import RBack from './entities/r-back'
+import RRoad from './entities/r-road'
+import RLetter from './entities/r-letter'
 
 // Components
 import OrbitControl from './orbitControl'
@@ -55,6 +57,9 @@ class Scene extends SceneAbs {
         // this.trackball.start(this.camera)
 
         // Entities
+        this.rBack = new RBack(this)
+        this.rRoad = new RRoad(this)
+        this.rLetter = new RLetter(this)
 
         // Post Process
         // this.dof                    = new Dof(this)
@@ -176,13 +181,13 @@ class Scene extends SceneAbs {
 
         this.camera.updateProjection(this.width / this.height)
 
-        this.cameraPositionTarget[0] = Mouse.cursor[0] * .35 + this.tiltOffset[0]
-        this.cameraPositionTarget[1] = Mouse.cursor[1] * .1 + this.tiltOffset[1]
+        // this.cameraPositionTarget[0] = Mouse.cursor[0] * .35 + this.tiltOffset[0]
+        // this.cameraPositionTarget[1] = Mouse.cursor[1] * .1 + this.tiltOffset[1]
 
         vec3.sub(this.cameraDirection, this.cameraPositionTarget, this.cameraPosition)
         vec3.scale(this.cameraDirection, this.cameraDirection, .04)
         vec3.add(this.cameraPosition, this.cameraPosition, this.cameraDirection)
-        
+
         this.camera.node.position[0] = this.cameraPosition[0]
         this.camera.node.position[1] = -this.cameraPosition[1]
         this.camera.node.position[2] = this.cameraPosition[2]
@@ -206,6 +211,9 @@ class Scene extends SceneAbs {
         gl.viewport(0, 0, this.width, this.height)
 
         // Render Time
+        this.rBack.render();
+        this.rRoad.render();
+        // this.rLetter.render();
         for (let i = 0; i < this.meshes.length; i++) {
             this.meshes[i].render()
         }

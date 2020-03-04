@@ -2,6 +2,8 @@ export default {
 
     images: {
         "testTexture":          { url: "assets/UV_Grid.jpg", options: [] },
+        "mountains":            { url: "assets/mountains.jpg", options: [] },
+        "outrun":               { url: "assets/outrun.jpg", options: [] },
     },
 
     videos: {
