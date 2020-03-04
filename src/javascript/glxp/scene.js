@@ -213,7 +213,7 @@ class Scene extends SceneAbs {
         // Render Time
         this.rBack.render();
         this.rRoad.render();
-        // this.rLetter.render();
+        this.rLetter.render();
         for (let i = 0; i < this.meshes.length; i++) {
             this.meshes[i].render()
         }

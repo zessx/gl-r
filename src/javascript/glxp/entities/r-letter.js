@@ -37,8 +37,8 @@ class RLetter {
         this.scene = scene
         this.gl = scene.gl
 
-        this.vertShader = require('../../../shaders/r.vert')
-        this.fragShader = require('../../../shaders/r.frag')
+        this.vertShader = require('../../../shaders/r-letter.vert')
+        this.fragShader = require('../../../shaders/r-letter.frag')
 
         this.initProgram()
         this.initBuffer({

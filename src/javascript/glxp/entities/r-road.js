@@ -1,4 +1,21 @@
-import PlaneGeom from '../planeGeom'
+const VERTICES = [
+    -1, 1, 0,
+    -1, -1, 0,
+    1, -1, 0,
+    1, 1, 0,
+]
+
+const INDICES = [
+    0, 1, 2, 0, 2, 3
+]
+
+const UVS = [
+    0, 0,
+    0, 1,
+    1, 1,
+    1, 0,
+]
+
 import Node from '../node'
 
 class RRoad {
@@ -8,16 +25,14 @@ class RRoad {
         this.scene = scene
         this.gl = scene.gl
 
-        this.geom = new PlaneGeom(3, 2, 20, 20)
-
         this.vertShader = require('../../../shaders/r-road.vert')
         this.fragShader = require('../../../shaders/r-road.frag')
 
         this.initProgram()
         this.initBuffer({
-            vertices: this.geom.vertices,
-            indices: this.geom.indices,
-            uvs: this.geom.uvs,
+            vertices: VERTICES,
+            indices: INDICES,
+            uvs: UVS,
         })
 
         this.uniforms = {}
@@ -62,7 +77,7 @@ class RRoad {
         /**
          * Draw
          */
-        gl.drawElements(gl.TRIANGLES, this.geom.indices.length, gl.UNSIGNED_SHORT, 0)
+        gl.drawElements(gl.TRIANGLES, INDICES.length, gl.UNSIGNED_SHORT, 0)
 
     }
 
