@@ -20,10 +20,6 @@ void main(void) {
     vec3 pos = vPos;
     vec2 uvs = vUvs;
 
-    // Rotate the field to create a "road"
-    // pos.y *= cos(vRotation);
-    // pos.z = sin(vRotation) * pos.y;
-
     pos.z = pos.y * 13.;
 
     gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix * vec4(pos, 1.0);

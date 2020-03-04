@@ -27,7 +27,7 @@ void main() {
     // Grid
     float flag = max(flagX, flagY);
 
-    vec3 color = COLOR_PINK * vec3(flag / 255.);
+    vec3 color = mix(COLOR_PINK, COLOR_PURPLE_DARK, uvs.y) * vec3(flag / 255.);
 
     gl_FragColor = vec4(color, 1.);
 }

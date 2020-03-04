@@ -4,7 +4,7 @@ import STORE        from './store'
 import Scene        from './glxp/scene'
 import App          from './vue'
 import Cursor       from './utils/cursor'
-import Content      from '../content/content'  
+import Content      from '../content/content'
 
 
 // const framecounter = new TOOLS.FrameRateUI()
@@ -22,4 +22,3 @@ window.addEventListener('resize', ()=>{
     STORE.screenWidth = window.innerWidth
     STORE.screenHeight = window.innerHeight
 })
-

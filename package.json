@@ -33,6 +33,7 @@
     "style-loader": "^0.13.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "svg-mesh-3d": "^1.1.0",
     "terser-webpack-plugin": "^1.2.1",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.1",

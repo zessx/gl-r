@@ -10,6 +10,7 @@ uniform float uTime;
 
 const float PI = 3.14159265;
 const vec3 COLOR_YELLOW =       vec3(250., 235., 44.);
+const vec3 COLOR_RED =          vec3(189., 9., 50.);
 const vec3 COLOR_PINK_DARK =    vec3(245., 39., 137.);
 const vec3 COLOR_PINK =         vec3(233., 0., 255.);
 const vec3 COLOR_BLUE =         vec3(22., 133., 248.);
@@ -25,11 +26,12 @@ void main() {
     float dist = sqrt(pow(uvs.x, 2.) + pow(uvs.y, 2.));
     float distFlag = 1. - step(radius, dist);
 
-    float yFlag = 1. - step(1.4, sin(pow(uvs.y / (radius * 2.), 1.7) * 30. * (2. * PI) - 1.72) + 1.);
+    // float yFlag = 1. - step(1.4, sin(pow((uvs.y + 1.), 2.) * 20. * (2. * PI) + uTime * 5.) + 1.);
+    float yFlag = 1. - step(1.4, sin(exp(uvs.y + 1.) * 20. * (2. * PI) + uTime * 5.) + 1.);
 
     float flag = distFlag * yFlag;
 
-    vec3 color = COLOR_YELLOW * vec3(flag / 255. / (dist * 3.), flag / 255. * (dist * 3.5), flag / 255.);
+    vec3 color = mix(COLOR_YELLOW, COLOR_RED, uvs.y + 0.5) * vec3(flag / 255., flag / 255., flag / 255.);
 
     gl_FragColor = vec4(color, 1.);
 }

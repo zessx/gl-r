@@ -11,10 +11,11 @@ import TextureLoader from './textureLoader'
 import Node from './node'
 
 // Entities
-import RBack from './entities/r-back'
-import RSun from './entities/r-sun'
-import RRoad from './entities/r-road'
-import RLetter from './entities/r-letter'
+import RBack from './entities/RBack'
+import RSun from './entities/RSun'
+import RRoad from './entities/RRoad'
+import RLetter from './entities/RLetter'
+import RLetterShadow from './entities/RLetterShadow'
 
 // Components
 import OrbitControl from './orbitControl'
@@ -62,6 +63,7 @@ class Scene extends SceneAbs {
         this.rSun = new RSun(this)
         this.rRoad = new RRoad(this)
         this.rLetter = new RLetter(this)
+        this.rLetterShadow = new RLetterShadow(this)
 
         // Post Process
         // this.dof                    = new Dof(this)
@@ -216,7 +218,9 @@ class Scene extends SceneAbs {
         this.rBack.render();
         this.rSun.render();
         this.rRoad.render();
+        this.rLetterShadow.render();
         this.rLetter.render();
+
         for (let i = 0; i < this.meshes.length; i++) {
             this.meshes[i].render()
         }

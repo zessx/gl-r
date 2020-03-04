@@ -1,8 +1,8 @@
 const VERTICES = [
-    -5, 1, 0,
-    -5, -1, 0,
-    5, -1, 0,
-    5, 1, 0,
+    -6, 1, 0,
+    -6, -1, 0,
+    6, -1, 0,
+    6, 1, 0,
 ]
 
 const INDICES = [
@@ -25,8 +25,8 @@ class RRoad {
         this.scene = scene
         this.gl = scene.gl
 
-        this.vertShader = require('../../../shaders/r-road.vert')
-        this.fragShader = require('../../../shaders/r-road.frag')
+        this.vertShader = require(`../../../shaders/${this.constructor.name}.vert`)
+        this.fragShader = require(`../../../shaders/${this.constructor.name}.frag`)
 
         this.initProgram()
         this.initBuffer({
