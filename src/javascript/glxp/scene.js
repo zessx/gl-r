@@ -12,6 +12,7 @@ import Node from './node'
 
 // Entities
 import RBack from './entities/r-back'
+import RSun from './entities/r-sun'
 import RRoad from './entities/r-road'
 import RLetter from './entities/r-letter'
 
@@ -58,6 +59,7 @@ class Scene extends SceneAbs {
 
         // Entities
         this.rBack = new RBack(this)
+        this.rSun = new RSun(this)
         this.rRoad = new RRoad(this)
         this.rLetter = new RLetter(this)
 
@@ -212,6 +214,7 @@ class Scene extends SceneAbs {
 
         // Render Time
         this.rBack.render();
+        this.rSun.render();
         this.rRoad.render();
         this.rLetter.render();
         for (let i = 0; i < this.meshes.length; i++) {

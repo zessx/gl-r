@@ -17,17 +17,19 @@ const vec3 COLOR_PURPLE_DARK =  vec3(61., 20., 76.);
 
 void main() {
     vec2 uvs = vUvs;
+    uvs -= vec2(0.5, 0.35);
 
-    float speed = 25.;
+    float speed = 5.;
+    float radius =  0.3;
 
-    // Vertical lines
-    float flagX = step(1.99, sin(uvs.x * 50. * (2. * PI)) + 1.);
-    // Horizontal lines
-    float flagY = step(1.99, sin(uvs.y * 50. * (2. * PI) + uTime * speed) * -1. + 1.);
-    // Grid
-    float flag = max(flagX, flagY);
+    float dist = sqrt(pow(uvs.x, 2.) + pow(uvs.y, 2.));
+    float distFlag = 1. - step(radius, dist);
 
-    vec3 color = COLOR_PINK * vec3(flag / 255.);
+    float yFlag = 1. - step(1.4, sin(pow(uvs.y / (radius * 2.), 1.7) * 30. * (2. * PI) - 1.72) + 1.);
+
+    float flag = distFlag * yFlag;
+
+    vec3 color = COLOR_YELLOW * vec3(flag / 255. / (dist * 3.), flag / 255. * (dist * 3.5), flag / 255.);
 
     gl_FragColor = vec4(color, 1.);
 }
