@@ -783,6 +783,7 @@ const UVS = [
     1, 0.4872025145936237
 ]
 
+import Node from '../node'
 class RLetter {
 
     constructor(scene) {
@@ -801,6 +802,12 @@ class RLetter {
         })
 
         this.uniforms = {}
+
+        this.node = new Node()
+
+        this.createUniform('uModelMatrix', 'mat4')
+        this.createUniform('uViewMatrix', 'mat4')
+        this.createUniform('uProjectionMatrix', 'mat4')
 
         this.createUniform('uRez', 'float2');
         this.createUniform('uImgRez', 'float2');
@@ -825,9 +832,11 @@ class RLetter {
 
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indicesBuffer)
 
+        this.bindUniform('uModelMatrix', this.node.getMatrix())
+        this.bindUniform('uViewMatrix', this.scene.camera.getViewMatrix())
+        this.bindUniform('uProjectionMatrix', this.scene.camera.getProjectionMatrix())
 
         this.bindUniform('uRez', [this.scene.width, this.scene.height])
-
         this.bindUniform('uTime', this.scene.time)
 
         /**

@@ -1,5 +1,3 @@
-#extension GL_OES_standard_derivatives : enable
-
 precision highp float;
 
 varying vec2 vUvs;
@@ -26,8 +24,8 @@ void main() {
     float dist = sqrt(pow(uvs.x, 2.) + pow(uvs.y, 2.));
     float distFlag = 1. - step(radius, dist);
 
-    // float yFlag = 1. - step(1.4, sin(pow((uvs.y + 1.), 2.) * 20. * (2. * PI) + uTime * 5.) + 1.);
-    float yFlag = 1. - step(1.4, sin(exp(uvs.y + 1.) * 20. * (2. * PI) + uTime * 5.) + 1.);
+    // float yFlag = 1. - step(1.4, sin(pow((uvs.y + 1.), 2.) * 20. * (2. * PI) + uTime * 2.) + 1.);
+    float yFlag = 1. - step(1.4, sin(exp(0.7 * (uvs.y + 1.)) * 20. * (2. * PI) + uTime * 2.) + 1.);
 
     float flag = distFlag * yFlag;
 

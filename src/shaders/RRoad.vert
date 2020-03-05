@@ -5,7 +5,6 @@ attribute vec2 aUvs;
 
 varying vec3 vPos;
 varying vec2 vUvs;
-varying float vRotation;
 
 uniform mat4 uModelMatrix;
 uniform mat4 uViewMatrix;
@@ -15,7 +14,6 @@ uniform float uTime;
 void main(void) {
     vPos = aPos;
     vUvs = aUvs;
-    vRotation = 80.;
 
     vec3 pos = vPos;
     vec2 uvs = vUvs;
