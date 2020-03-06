@@ -15,6 +15,8 @@ void main(void) {
     vPos = aPos;
     vUvs = aUvs;
 
+    vPos *= vec3(1.3);
+
     vPos.x -= 0.08;
     vPos.x -= (ceil(sin(uTime * 3.) * sin(uTime * 5.) * sin(uTime * 7.) * sin(uTime * 11.) * sin(uTime * 13.)) - 0.5) / 7.;
 

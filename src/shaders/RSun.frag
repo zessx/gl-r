@@ -20,14 +20,15 @@ void main() {
 
     float speed = 1.;
     float radius =  0.3;
-    float lines = (2. * PI) * 100.;
+    float lines = (2. * PI) * 2000.;
 
     float dist = sqrt(pow(uvs.x, 2.) + pow(uvs.y, 2.));
     float distMask = 1. - step(radius, dist);
 
     // float yMask = 1. - step(.7, pow(sin(exp(0.7 * (uvs.y + 1.)) * lines + uTime * speed), 2.));
     // float yMask = 1. - step(.7, pow(sin(uvs.y * lines + uTime * speed), 2.));
-    float yMask = 1. - step(0.6, sin((uvs.y + .5) * (uvs.y + .5) / 4. * lines + uTime * speed) + 1.);
+    // float yMask = 1. - step(0.6, sin((uvs.y + .5) * (uvs.y + .5) / 4. * lines + uTime * speed) + 1.);
+    float yMask = 1. - step(0.6, sin(sqrt((uvs.y + .3) * lines) + uTime * speed) + 1.);
 
     float mask = distMask * yMask;
     float rMask = mask - 1. * -1.;

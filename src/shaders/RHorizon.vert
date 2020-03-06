@@ -12,5 +12,7 @@ void main(void) {
     vPos = aPos;
     vUvs = aUvs;
 
+    vPos.y += 0.2;
+
     gl_Position = vec4(vPos, 1.0);
 }

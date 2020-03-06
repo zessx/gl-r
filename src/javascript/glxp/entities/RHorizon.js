@@ -7,7 +7,7 @@ class RHorizon {
         this.scene = scene
         this.gl = scene.gl
 
-        this.geom = new PlaneGeom(3, 2, 20, 20)
+        this.geom = new PlaneGeom(10, 0.1, 20, 2)
 
         this.vertShader = require(`../../../shaders/${this.constructor.name}.vert`)
         this.fragShader = require(`../../../shaders/${this.constructor.name}.frag`)

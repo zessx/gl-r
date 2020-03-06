@@ -220,7 +220,7 @@ class Scene extends SceneAbs {
         this.rBack.render();
         this.rSun.render();
         this.rRoad.render();
-        // this.rHorizon.render();
+        this.rHorizon.render();
         this.rLetterShadow.render();
         this.rLetter.render();
 

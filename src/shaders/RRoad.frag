@@ -26,8 +26,9 @@ void main() {
     float flagY = step(1.99, sin(uvs.y * 50. * (2. * PI) + uTime * speed) * -1. + 1.);
     // Grid
     float flag = max(flagX, flagY);
-
     vec3 color = mix(COLOR_PINK, COLOR_PURPLE_DARK, uvs.y) * vec3(flag / 255.);
+
+    gl_FragColor = vec4(color, 0.1);
 
     gl_FragColor = vec4(color, 1.);
 }
