@@ -1,27 +1,47 @@
-import PlaneGeom from '../planeGeom'
+const VERTICES = [
+    -1, 1, 0,
+    -1, -1, 0,
+    1, -1, 0,
+    1, 1, 0,
+]
 
-class RHorizon {
+const INDICES = [
+    0, 1, 2, 0, 2, 3
+]
+
+const UVS = [
+    0, 0,
+    0, 1,
+    1, 1,
+    1, 0,
+]
+
+import Node from '../node'
+
+class RSky {
 
     constructor(scene) {
 
         this.scene = scene
         this.gl = scene.gl
 
-        this.geom = new PlaneGeom(10, 0.1, 20, 2)
-
         this.vertShader = require(`../../../shaders/${this.constructor.name}.vert`)
         this.fragShader = require(`../../../shaders/${this.constructor.name}.frag`)
 
         this.initProgram()
         this.initBuffer({
-            vertices: this.geom.vertices,
-            indices: this.geom.indices,
-            uvs: this.geom.uvs,
+            vertices: VERTICES,
+            indices: INDICES,
+            uvs: UVS,
         })
 
         this.uniforms = {}
 
+        this.node = new Node()
+        this.node.scale[1] = -1;
+
         this.createUniform('uRez', 'float2')
+        this.createUniform('uTime')
 
     }
 
@@ -43,11 +63,12 @@ class RHorizon {
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.indicesBuffer)
 
         this.bindUniform('uRez', [this.scene.width, this.scene.height])
+        this.bindUniform('uTime', this.scene.time)
 
         /**
          * Draw
          */
-        gl.drawElements(gl.TRIANGLES, this.geom.indices.length, gl.UNSIGNED_SHORT, 0)
+        gl.drawElements(gl.TRIANGLES, INDICES.length, gl.UNSIGNED_SHORT, 0)
 
     }
 
@@ -163,4 +184,4 @@ class RHorizon {
 
 }
 
-export default RHorizon
+export default RSky

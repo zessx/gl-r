@@ -11,10 +11,8 @@ import TextureLoader from './textureLoader'
 import Node from './node'
 
 // Entities
-import RBack from './entities/RBack'
-import RSun from './entities/RSun'
+import RSky from './entities/RSky'
 import RRoad from './entities/RRoad'
-import RHorizon from './entities/RHorizon'
 import RLetter from './entities/RLetter'
 import RLetterShadow from './entities/RLetterShadow'
 
@@ -60,10 +58,8 @@ class Scene extends SceneAbs {
         // this.trackball.start(this.camera)
 
         // Entities
-        this.rBack = new RBack(this)
-        this.rSun = new RSun(this)
+        this.rSky = new RSky(this)
         this.rRoad = new RRoad(this)
-        this.rHorizon = new RHorizon(this)
         this.rLetter = new RLetter(this)
         this.rLetterShadow = new RLetterShadow(this)
 
@@ -217,10 +213,8 @@ class Scene extends SceneAbs {
         gl.viewport(0, 0, this.width, this.height)
 
         // Render Time
-        this.rBack.render();
-        this.rSun.render();
+        this.rSky.render();
         this.rRoad.render();
-        this.rHorizon.render();
         this.rLetterShadow.render();
         this.rLetter.render();
 

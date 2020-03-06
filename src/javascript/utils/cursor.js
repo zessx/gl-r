@@ -85,11 +85,13 @@ class Cursor {
     draw() {
         let ctx = this.ctx
         ctx.clearRect(0, 0, this.width * this.dpr, this.height * this.dpr)
-        ctx.beginPath()
-        ctx.fillStyle = 'rgba(38, 38, 38, 1)'
-        ctx.lineWidth = 2
-        ctx.arc(45 * this.dpr, 45 * this.dpr, (10 + (15 * Math.easing.easeInOutCubic(this.scale))) * this.dpr, 0, 2 * Math.PI)
-        ctx.fill()
+
+        // Mouse cursor
+        // ctx.beginPath()
+        // ctx.fillStyle = 'rgba(38, 38, 38, 1)'
+        // ctx.lineWidth = 2
+        // ctx.arc(45 * this.dpr, 45 * this.dpr, (10 + (15 * Math.easing.easeInOutCubic(this.scale))) * this.dpr, 0, 2 * Math.PI)
+        // ctx.fill()
     }
 
     update() {
@@ -114,7 +116,7 @@ class Cursor {
             this.target = .75
             this.damping = .01
         } else if (this.prevent){
-            this.progress -= .02    
+            this.progress -= .02
             this.target = 0
             this.damping = .06
         } else if (this.hover) {
