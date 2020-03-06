@@ -18,18 +18,21 @@ void main() {
     vec2 uvs = vUvs;
     uvs -= vec2(0.5, 0.35);
 
-    float speed = 5.;
+    float speed = 1.;
     float radius =  0.3;
+    float lines = (2. * PI) * 100.;
 
     float dist = sqrt(pow(uvs.x, 2.) + pow(uvs.y, 2.));
-    float distFlag = 1. - step(radius, dist);
+    float distMask = 1. - step(radius, dist);
 
-    // float yFlag = 1. - step(1.4, sin(pow((uvs.y + 1.), 2.) * 20. * (2. * PI) + uTime * 2.) + 1.);
-    float yFlag = 1. - step(1.4, sin(exp(0.7 * (uvs.y + 1.)) * 20. * (2. * PI) + uTime * 2.) + 1.);
+    // float yMask = 1. - step(.7, pow(sin(exp(0.7 * (uvs.y + 1.)) * lines + uTime * speed), 2.));
+    // float yMask = 1. - step(.7, pow(sin(uvs.y * lines + uTime * speed), 2.));
+    float yMask = 1. - step(0.6, sin((uvs.y + .5) * (uvs.y + .5) / 4. * lines + uTime * speed) + 1.);
 
-    float flag = distFlag * yFlag;
+    float mask = distMask * yMask;
+    float rMask = mask - 1. * -1.;
 
-    vec3 color = mix(COLOR_YELLOW, COLOR_RED, uvs.y + 0.5) * vec3(flag / 255., flag / 255., flag / 255.);
+    vec3 color = mix(COLOR_YELLOW, COLOR_RED, uvs.y * 4. + 0.8) * vec3(mask / 255.);
 
     gl_FragColor = vec4(color, 1.);
 }

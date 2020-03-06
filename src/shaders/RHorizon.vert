@@ -6,6 +6,8 @@ attribute vec2 aUvs;
 varying vec3 vPos;
 varying vec2 vUvs;
 
+uniform float uTime;
+
 void main(void) {
     vPos = aPos;
     vUvs = aUvs;

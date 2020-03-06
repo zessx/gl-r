@@ -14,6 +14,7 @@ import Node from './node'
 import RBack from './entities/RBack'
 import RSun from './entities/RSun'
 import RRoad from './entities/RRoad'
+import RHorizon from './entities/RHorizon'
 import RLetter from './entities/RLetter'
 import RLetterShadow from './entities/RLetterShadow'
 
@@ -62,6 +63,7 @@ class Scene extends SceneAbs {
         this.rBack = new RBack(this)
         this.rSun = new RSun(this)
         this.rRoad = new RRoad(this)
+        this.rHorizon = new RHorizon(this)
         this.rLetter = new RLetter(this)
         this.rLetterShadow = new RLetterShadow(this)
 
@@ -218,6 +220,7 @@ class Scene extends SceneAbs {
         this.rBack.render();
         this.rSun.render();
         this.rRoad.render();
+        // this.rHorizon.render();
         this.rLetterShadow.render();
         this.rLetter.render();
 
