@@ -11,6 +11,10 @@ uniform mat4 uViewMatrix;
 uniform mat4 uProjectionMatrix;
 uniform float uTime;
 
+float random (vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
+}
+
 void main(void) {
     vPos = aPos;
     vUvs = aUvs;
@@ -18,7 +22,7 @@ void main(void) {
     vPos *= vec3(1.3);
 
     vPos.x -= 0.08;
-    vPos.x -= (ceil(sin(uTime * 3.) * sin(uTime * 5.) * sin(uTime * 7.) * sin(uTime * 11.) * sin(uTime * 13.)) - 0.5) / 7.;
+//    vPos.x += ((random(vec2(uTime)) - vec2(0.5)) * vec2(0.1)).y;
 
     gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix * vec4(vPos, 1.0);
 }
