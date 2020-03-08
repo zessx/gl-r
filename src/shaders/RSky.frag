@@ -20,6 +20,10 @@ const vec3 COLOR_BLUE_DARK =    vec3(3., 33., 74.);
 const vec3 COLOR_BLUE_DARKER =  vec3(1., 11., 25.); // https://www.color-hex.com/color-palette/35848
 const vec3 COLOR_PURPLE_DARK =  vec3(61., 20., 76.);
 
+float random (vec2 st) {
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233)))* 43758.5453123);
+}
+
 void main() {
     vec2 uvs = vUvs;
     uvs -= vec2(0.5, 0.35);
@@ -34,7 +38,7 @@ void main() {
     float sunStripesMask = 1. - step(0.6, sin(sqrt((uvs.y + .3) * lines) + uTime * speed) + 1.);
     float sunMask = sunRadiusMask * sunStripesMask;
 
-    float horizonMask = step(0.9999, (-(uvs.y - 0.06) * (uvs.y - 0.06)) + 1.);
+    float starMask = random(uvs.xy);
 
     float alpha = 1.;
     vec3 color = vec3(0., 0., 0.);
@@ -47,12 +51,13 @@ void main() {
         color = mix(COLOR_YELLOW, COLOR_RED, uvs.y * 4. + 0.8) * vec3(sunMask / 255.);
     }
 
-    // Horizon
-    if (horizonMask == 1.) {
-        // color = mix(color, COLOR_PINK * RGB_NORMALIZER, abs(sin(uTime)));
+    // Stars
+    if (starMask >= 0.999) {
+        color = mix(color, COLOR_WHITE * RGB_NORMALIZER, starMask);
     }
 
-    // color = mix(color, COLOR_PINK * RGB_NORMALIZER, uvs.y * 0.1 + 1.);
+    // Horizon
+    color = mix(color, COLOR_PINK * RGB_NORMALIZER, smoothstep(0.04, 0.10, uvs.y));
 
     gl_FragColor = vec4(color, 1.);
 }
