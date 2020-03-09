@@ -36,6 +36,7 @@ void main() {
 
     float sunRadiusMask = 1. - step(radius, dist);
     float sunStripesMask = 1. - step(0.6, sin(sqrt((uvs.y + .3) * lines) + uTime * speed) + 1.);
+
     float sunMask = sunRadiusMask * sunStripesMask;
 
     float starMask = random(uvs.xy);
@@ -48,7 +49,7 @@ void main() {
 
     // Striped sun
     if (sunMask == 1.) {
-        color = mix(COLOR_YELLOW, COLOR_RED, uvs.y * 4. + 0.8) * vec3(sunMask / 255.);
+        color = mix(COLOR_YELLOW, COLOR_RED, uvs.y * 4. + 0.8) * RGB_NORMALIZER;
     }
 
     // Stars
