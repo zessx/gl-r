@@ -36,7 +36,7 @@
     "svg-mesh-3d": "^1.1.0",
     "terser-webpack-plugin": "^1.2.1",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.4.1",
+    "webpack-dev-server": "^3.1.11",
     "when": "^3.7.8"
   }
 }
